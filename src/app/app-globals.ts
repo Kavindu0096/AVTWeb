@@ -1,0 +1,1 @@
+export const baseAppUrl = 'https://localhost:44320/';
