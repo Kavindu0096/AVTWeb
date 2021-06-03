@@ -23,7 +23,7 @@
                 <div class="card ">
                     <div class="card-header">
                         <div class="card-tools">
-                            <button class="btn">
+                            <button class="btn" (click)="OnCreate()">
                                 <i class="fas fa-plus-circle fa-lg"></i>
                             </button>
                         </div>
@@ -43,18 +43,18 @@
                             <tbody>
                                 <tr *ngFor="let Aircraft of AircraftList; index as i">
                                     <td>{{ i + 1 }}</td>
-                                    <td>{{ Aircraft.Code }}</td>
-                                    <td>{{ Aircraft.Description }}</td>
-                                    <td>{{ Aircraft.AreaGroupName }}</td>
-                                    <td>{{ Aircraft.IsActive }}</td>
+                                    <td>{{ Aircraft.make }}</td>
+                                    <td>{{ Aircraft.model }}</td>
+                                    <td>{{ Aircraft.registration }}</td>
+                                    <td>{{Aircraft.deletedAt==null }}</td>
                                     <td>
-                                        <button type="button" class="btn" (click)="AreaOnView(Area.ID)">
+                                        <button type="button" class="btn">
                                             <i class="far fa-eye"></i>
                                         </button>
-                                        <button type="button" class="btn" (click)="AreaOnEdit(Area.ID)">
+                                        <button type="button" class="btn">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button type="button" class="btn" (click)="AreaOnDelete(Area.ID)">
+                                        <button type="button" class="btn">
                                             <i class="far fa-trash-alt" style="color: rgb(235, 66, 0);"></i>
                                         </button>
                                     </td>

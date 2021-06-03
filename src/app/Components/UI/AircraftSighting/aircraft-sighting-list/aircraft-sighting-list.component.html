@@ -1,0 +1,74 @@
+<!-- #region Header-->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h4><b><i class="fas fa-clipboard-list"></i>&nbsp; View Aircraft Sightings </b></h4>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #endregion -->
+
+<!-- #region Content-->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="card-tools">
+                            <button class="btn" (click)="OnCreate()">
+                                <i class="fas fa-plus-circle fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="DataTable" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                    <th>Registration</th>
+                                    <th>Location</th>
+                                    <th>Sighted At</th>
+                                    <th>Active</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let AircraftSighting of AircraftSightingList; index as i">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ AircraftSighting.make }}</td>
+                                    <td>{{ AircraftSighting.model }}</td>
+                                    <td>{{ AircraftSighting.registration }}</td>
+                                    <td>{{ AircraftSighting.location }}</td>
+                                    <td>{{ AircraftSighting.sightingAt | date:'yyy-MMM-dd h:mm a'}}</td>
+                                    <td>{{AircraftSighting.deletedAt==null }}</td>
+                                    <td>
+                                        <button type="button" class="btn" (click)=OnView(AircraftSighting.id)>
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn" (click)=OnEdit(AircraftSighting.id)>
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn" (click)=onDelete(AircraftSighting.id)>
+                                            <i class="far fa-trash-alt" style="color: rgb(235, 66, 0);"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #endregion -->

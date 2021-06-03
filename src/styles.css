@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+#mbtn_Close{
+    background-color: rgba(54, 54, 54, 0.363);
+}
+
+#mbtn_Close:hover{
+    background-color: rgba(54, 54, 54, 0.445);
+}
+
+td button i,.card-tools i{
+    opacity: 80%;
+}
+td button i:hover,.card-tools i:hover{
+    opacity: 100%;
+}
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(143, 141, 141); 
+    border-radius: 0px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(160, 160, 160); 
+  }
+
+  .is-Selected{
+    background-color : #c9c9c9;
+}

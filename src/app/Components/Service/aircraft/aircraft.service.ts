@@ -10,6 +10,8 @@ export class AircraftService {
   constructor(public http: HttpClient) { }
 
   getAircraftList(): any {
-    return this.http.get<IAircraft>(baseAppUrl + "api/Aircraft");
+    return this.http.get<IAircraft>(baseAppUrl + "/api/Aircraft");
+    //return this.http.get<IAircraft>(baseAppUrl + "/abc");
+
   }
 }

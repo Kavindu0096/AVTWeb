@@ -14,9 +14,9 @@ export class NavBarComponent implements OnInit {
   }
 
   onArcraftSightingClick() {
-    this.router.navigate(['/AircraftSightings'])
+    this.router.navigate(['/AircraftSightingsList'])
   }
   onArcraftClick() {
-    this.router.navigate(['/Aircraft'])
+    this.router.navigate(['/AircraftList'])
   }
 }

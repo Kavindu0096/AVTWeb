@@ -1,0 +1,149 @@
+<!-- #region Header-->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>
+                    <i [class]="action.actionIcon"></i>&nbsp;{{
+                    Mode
+                    }}&nbsp;Aircraft
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- #endregion -->
+<!-- #region Content-->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="card-tools">
+                            <button class="btn" (click)="BackToList()">
+                                <i class="fas fa-stream"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <form role="form" [formGroup]="DataForm" (ngSubmit)="onCreateOrUpdate()">
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- #region Make-->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="make">Make </label>
+                                        <input type="text" class="form-control" id="make" formControlName="make" fo
+                                            placeholder="Enter Make of Aircraft" [disabled]="action.fildisabler" />
+                                    </div>
+                                </div>
+                                <!-- #endregion -->
+
+                                <!-- #region Model-->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="model">Model</label>
+                                        <input type="text" class="form-control" id="model" formControlName="model"
+                                            placeholder="Enter Model of Aircraft" [disabled]="action.fildisabler" />
+                                    </div>
+                                </div>
+                                <!-- #endregion -->
+
+                                <!-- #region Registration-->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="registration">Registration</label>
+                                        <input type="text" class="form-control" id="registration"
+                                            formControlName="registration" placeholder="Enter Registration of Aircraft"
+                                            [disabled]="action.fildisabler" />
+                                    </div>
+                                </div>
+                                <!-- #endregion -->
+
+                                <!-- #region Aircraft-->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="aircraft">Aircraft</label>
+                                        <input type="text" class="form-control" id="aircraft" formControlName="aircraft"
+                                            readonly placeholder="Aircraft" [disabled]="action.fildisabler" />
+                                    </div>
+                                </div>
+                                <!-- #endregion -->
+
+                            </div>
+
+                            <div class="row">
+                                <!-- #region Location-->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="location">Location </label>
+                                        <input type="text" class="form-control" id="location" formControlName="location"
+                                            placeholder="Enter Location of Sighting" [disabled]="action.fildisabler" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label>Posting Date</label>
+
+                                            <div class="input-group date" data-target-input="nearest">
+                                                <div class="input-group-prepend" data-target="#sightingAt"
+                                                    data-toggle="datetimepicker">
+
+                                                </div>
+                                                <input #pDate formControlName="sightingAt" type="date" id="sightingAt"
+                                                    class="form-control" placeholder="sighting At"
+                                                    data-target="#sightingAt" />
+                                            </div>
+                                            <!-- <div *ngIf="checkEnterPDate(pDate) && isValid" class="text-danger">
+                                          *Sale Order Date is required.
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- #endregion -->
+
+                                <div class="col-md-3">
+                                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+                                        style="display:none;">
+                                    <button type="button" class="btn btn-success" (click)="file.click()">Upload
+                                        File</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="upload" *ngIf="progress > 0">
+                                        {{progress}}%
+                                    </span>
+                                    <span class="upload" *ngIf="message">
+                                        {{message}}
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="form-group float-sm-right">
+                                <button type="submit" class="btn btn-dark pl-3 pr-3 pt-2 pb-2" id="mainButton">
+                                    <i [class]="action.mainBtnIcon"></i>&nbsp;&nbsp;{{
+                                    action.btnName
+                                    }}</button>&nbsp;&nbsp;
+                                <button type="reset" class="btn btn-default pl-3 pr-3 pt-2 pb-2" (click)="BackToList()"
+                                    [disabled]="action.fildisabler">
+                                    Cancel
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <pre>{{DataForm.getRawValue() | json}}</pre> -->
+</section>
+<!-- #endregion -->
