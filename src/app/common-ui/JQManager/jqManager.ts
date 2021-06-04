@@ -114,7 +114,7 @@ export class JQManager {
 
   //show default modal dialog
   public DefaultModalDialog(modalDialogId: string): void {
-    $("#" + modalDialogId).modal();
+    $("#" + modalDialogId).modal('show');
   }
   public BackdropstaticModalDialog(modalDialogId: string): void {
     $("#" + modalDialogId).modal({ backdrop: 'static', keyboard: false });
@@ -124,7 +124,6 @@ export class JQManager {
   public hideModalDialog(modalDialogId: string): any {
     return $("#" + modalDialogId).modal("hide");
   }
-
   //#endregion
 
   //#region Toastr Message

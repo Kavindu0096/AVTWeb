@@ -38,8 +38,11 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="make">Make </label>
-                                        <input type="text" class="form-control" id="make" formControlName="make" fo
-                                            placeholder="Enter Make of Aircraft" [disabled]="action.fildisabler" />
+                                        <input type="text" class="form-control" id="make" formControlName="make"
+                                            readonly (click)="showAiraftLookup()" fo
+                                            placeholder="Enter Make of Aircraft" [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.make.errors && isValid}" />
+
                                     </div>
                                 </div>
                                 <!-- #endregion -->
@@ -49,7 +52,9 @@
                                     <div class="form-group">
                                         <label for="model">Model</label>
                                         <input type="text" class="form-control" id="model" formControlName="model"
-                                            placeholder="Enter Model of Aircraft" [disabled]="action.fildisabler" />
+                                            readonly (click)="showAiraftLookup()" placeholder="Enter Model of Aircraft"
+                                            [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.model.errors && isValid}" />
                                     </div>
                                 </div>
                                 <!-- #endregion -->
@@ -58,9 +63,10 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="registration">Registration</label>
-                                        <input type="text" class="form-control" id="registration"
-                                            formControlName="registration" placeholder="Enter Registration of Aircraft"
-                                            [disabled]="action.fildisabler" />
+                                        <input type="text" class="form-control" id="registration" readonly
+                                            (click)="showAiraftLookup()" formControlName="registration"
+                                            placeholder="Enter Registration of Aircraft" [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.registration.errors && isValid}" />
                                     </div>
                                 </div>
                                 <!-- #endregion -->
@@ -83,7 +89,8 @@
                                     <div class="form-group">
                                         <label for="location">Location </label>
                                         <input type="text" class="form-control" id="location" formControlName="location"
-                                            placeholder="Enter Location of Sighting" [disabled]="action.fildisabler" />
+                                            placeholder="Enter Location of Sighting" [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.location.errors && isValid}" />
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -98,7 +105,8 @@
                                                 </div>
                                                 <input #pDate formControlName="sightingAt" type="date" id="sightingAt"
                                                     class="form-control" placeholder="sighting At"
-                                                    data-target="#sightingAt" />
+                                                    data-target="#sightingAt"
+                                                    [ngClass]="{'is-invalid': DataForm.controls.sightingAt.errors && isValid}" />
                                             </div>
                                             <!-- <div *ngIf="checkEnterPDate(pDate) && isValid" class="text-danger">
                                           *Sale Order Date is required.
@@ -107,21 +115,19 @@
                                     </div>
                                 </div>
                                 <!-- #endregion -->
-
+                                <div class="col-md-3">
+                                    <img [src]="imageSource" id="image" height="100px" width="120px">
+                                    {{
+                                    imageName
+                                    }}
+                                </div>
                                 <div class="col-md-3">
                                     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
                                         style="display:none;">
                                     <button type="button" class="btn btn-success" (click)="file.click()">Upload
-                                        File</button>
+                                        Image</button>
                                 </div>
-                                <div class="col-md-4">
-                                    <span class="upload" *ngIf="progress > 0">
-                                        {{progress}}%
-                                    </span>
-                                    <span class="upload" *ngIf="message">
-                                        {{message}}
-                                    </span>
-                                </div>
+
 
                             </div>
                         </div>
@@ -147,3 +153,6 @@
     <!-- <pre>{{DataForm.getRawValue() | json}}</pre> -->
 </section>
 <!-- #endregion -->
+
+<app-aircraft-lookup (setValueEmitter)="setAircraft($event)" [lookupName]="LookupName" [parmType]="parmType">
+</app-aircraft-lookup>

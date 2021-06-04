@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table id="DataTable" class="table table-bordered table-hover">
+                        <table id="DataTable_AT" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -48,13 +48,13 @@
                                     <td>{{ Aircraft.registration }}</td>
                                     <td>{{Aircraft.deletedAt==null }}</td>
                                     <td>
-                                        <button type="button" class="btn">
+                                        <button type="button" class="btn" (click)=OnView(Aircraft.aircraftId)>
                                             <i class="far fa-eye"></i>
                                         </button>
-                                        <button type="button" class="btn">
+                                        <button type="button" class="btn" (click)=OnEdit(Aircraft.aircraftId)>
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button type="button" class="btn">
+                                        <button type="button" class="btn" (click)=onDelete(Aircraft.aircraftId)>
                                             <i class="far fa-trash-alt" style="color: rgb(235, 66, 0);"></i>
                                         </button>
                                     </td>

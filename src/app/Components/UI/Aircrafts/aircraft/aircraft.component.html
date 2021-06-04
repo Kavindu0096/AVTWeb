@@ -38,8 +38,9 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="Code">Make </label>
-                                        <input type="text" class="form-control" id="Make" formControlName="Make" fo
-                                            placeholder="Enter Make of Aircraft" [disabled]="action.fildisabler" />
+                                        <input type="text" class="form-control" id="Make" formControlName="make" fo
+                                            placeholder="Enter Make of Aircraft" [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.make.errors && isValid}" />
                                     </div>
                                 </div>
                                 <!-- #endregion -->
@@ -48,8 +49,9 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="Model">Model</label>
-                                        <input type="text" class="form-control" id="Model" formControlName="Model"
-                                            placeholder="Enter Model of Aircraft" [disabled]="action.fildisabler" />
+                                        <input type="text" class="form-control" id="Model" formControlName="model"
+                                            placeholder="Enter Model of Aircraft" [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.model.errors && isValid}" />
                                     </div>
                                 </div>
                                 <!-- #endregion -->
@@ -57,9 +59,10 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="Registration">Registration</label>
-                                        <input type="text" class="form-control" id="Registration"
-                                            formControlName="Registration" placeholder="Enter Registration of Aircraft"
-                                            [disabled]="action.fildisabler" />
+                                        <input type="text" class="form-control" id="registration"
+                                            formControlName="registration" placeholder="Enter Registration of Aircraft"
+                                            [disabled]="action.fildisabler"
+                                            [ngClass]="{'is-invalid': DataForm.controls.registration.errors && isValid}" />
                                     </div>
                                 </div>
                                 <!-- #endregion -->

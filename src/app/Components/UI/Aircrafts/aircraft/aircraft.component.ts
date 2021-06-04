@@ -20,6 +20,7 @@ export class AircraftComponent implements OnInit {
   Mode: any;
   DataForm: FormGroup;
   action: Action;
+  isValid: boolean = false;
   constructor(
     public AircraftService: AircraftService,
     private formBuilder: FormBuilder,
@@ -52,15 +53,16 @@ export class AircraftComponent implements OnInit {
         break;
     }
   }
+  //Initiate form Group
   public initFormGroup(): void {
     this.DataForm = this.formBuilder.group({
-      AircraftID: ["", Validators.required],
-      Make: ["", Validators.required],
-      Model: ["", Validators.required],
-      Registration: ["", Validators.required],
-      CreatedBy: [0, Validators.required],
-      ModifiedBy: [0, Validators.required],
-      DeletedAt: [null, Validators.required],
+      aircraftId: [0],
+      make: ["", Validators.required],
+      model: ["", Validators.required],
+      registration: ["", Validators.required],
+      createdBy: [0],
+      modifiedBy: [0],
+      DeletedAt: [null],
 
     });
   }
@@ -68,17 +70,87 @@ export class AircraftComponent implements OnInit {
 
   }
   OnEdit(ID: any) {
-
+    this.LoadByID(ID);
   }
   OnView(ID: any) {
-
+    this.LoadByID(ID);
   }
   BackToList() {
 
     this.router.navigate(['/AircraftList'])
   }
 
+  //On creating or updating record
   onCreateOrUpdate() {
+
+    if (this.Mode == DocumentMode.VIEW) {
+      this.BackToList();
+    }
+    if (this.DataForm.valid) {
+
+      if (this.Mode == DocumentMode.CREATE) {
+        this.isValid = false;
+        var rowData = this.DataForm.getRawValue();
+        this.AircraftService.create(rowData).subscribe(
+          value => {
+            this.initFormGroup();
+            this.jqm.toastrSuccess(value.message);
+
+
+          },
+          (err: HttpErrorResponse) => {
+
+            this.jqm.toastrError(err.message);
+
+
+          }
+        );
+      }
+      if (this.Mode == DocumentMode.UPDATE) {
+        this.isValid = false;
+        var rowData = this.DataForm.getRawValue();
+        this.AircraftService.update(rowData).subscribe(
+          value => {
+            this.initFormGroup();
+            this.jqm.toastrSuccess(value.message);
+
+
+          },
+          (err: HttpErrorResponse) => {
+
+            this.jqm.toastrError(err.message);
+
+
+          }
+        );
+      }
+    }
+
+  }
+  //get data by id
+  LoadByID(ID: any) {
+
+    var pID = 0;
+    this.AircraftService.getAircraftByID(ID).subscribe(
+      value => {
+
+        var SDate = (value.data.result.sightingAt != "") ? String(value.data.result.sightingAt).substr(0, 10) : value.data.result.sightingAt;
+        this.DataForm.patchValue({
+          aircraftId: value.data.result.aircraftId,
+          make: value.data.result.make,
+          model: value.data.result.model,
+          registration: value.data.result.registration,
+          deletedAt: value.data.result.deletedAt,
+        })
+
+
+
+      },
+      (err: HttpErrorResponse) => {
+        this.jqm.toastrError(err, "Exception");
+      }
+    );
+
 
   }
 

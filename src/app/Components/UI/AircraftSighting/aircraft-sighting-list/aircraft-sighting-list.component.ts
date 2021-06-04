@@ -25,6 +25,7 @@ export class AircraftSightingListComponent implements OnInit {
       private toastr: ToastrService,
       private router: Router,
       private jqm: JQManager,
+
   ) { }
 
   ngOnInit(): void {
@@ -35,14 +36,14 @@ export class AircraftSightingListComponent implements OnInit {
 
     this.AircraftSightingService.getAircraftSightingList().subscribe(
       value => {
-
+        // this.jqm.DataTableDestroy('DataTable_AST');
         this.AircraftSightingList = value.data.result;
         // this.toastr.success('Hello world!', 'Toastr fun!');
-
+        this.jqm.DataTable('DataTable_AST');
       },
       (err: HttpErrorResponse) => {
 
-        console.log(err);
+
       }
     );
   }
@@ -71,7 +72,7 @@ export class AircraftSightingListComponent implements OnInit {
         value => {
 
           this.jqm.toastrSuccess(value.message);
-
+          this.getAircraftList();
 
         },
         (err: HttpErrorResponse) => {

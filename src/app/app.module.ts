@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { AircraftLookupComponent } from './Lookups/aircraft-lookup/aircraft-lookup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { DatePipe } from '@angular/common';
     NavBarComponent,
     AircraftListComponent,
     AircraftComponent,
+    AircraftLookupComponent,
 
   ],
   imports: [

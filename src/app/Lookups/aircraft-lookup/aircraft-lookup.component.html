@@ -1,0 +1,46 @@
+<div class="modal fade bd-example-modal-lg" id="aircraft_lookup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title"><i class="fab fa-buffer"></i>&nbsp; {{lookupName}} &nbsp; Lookup</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <table id="DataTableModel_Aircraft" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ID</th>
+                            <th>{{lookupName}} Make</th>
+                            <th>{{lookupName}} Model</th>
+                            <th>{{lookupName}} Registration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let lst of List; index as i;" (click)="getSelectedValue(lst, i)"
+                            (dblclick)="setValue()" [class.active]="i == selectedRow"
+                            [ngClass]="{'is-Selected': isRowSelected && (selectedRow == i) }">
+                            <td>{{i+1}}</td>
+                            <td>{{lst.aircraftId}}</td>
+                            <td>{{lst.make}}</td>
+                            <td>{{lst.model}}</td>
+                            <td>{{lst.registration}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer bg-light">
+                <button type="button" id="mbtn_Close" class="btn" data-dismiss="modal"><i
+                        class="fa fa-eraser"></i>&nbsp;Close</button>
+                <button type="button" class="btn btn-secondary" (click)="setValue()"><i
+                        class="fa fa-check"></i>&nbsp;Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
